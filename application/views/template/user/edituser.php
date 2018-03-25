@@ -5,8 +5,7 @@
     </div>
 
 
-    <form action="<?php echo site_url('user/updateuser'); ?>" method="post" style=" margin:  0 auto;">
-
+   <?php echo form_open('user/updateuser'); ?>
         <div class="col-md-6">
 
             <div class="form-group">
@@ -70,6 +69,13 @@
 
                 <input type="submit" class="form-control btn btn-primary" value="Update">
             </div>
+
+            
+             <?php if(validation_errors() != ""): ?>
+                <div class="alert alert-warning">
+                    <?php echo validation_errors(); ?>
+                </div>
+             <?php endif; ?>
             
         </div>
 

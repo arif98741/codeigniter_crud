@@ -7,6 +7,7 @@ class User extends  CI_Controller{
     {
         parent::__construct();
         $this->load->model('UserModel');
+        $this->load->helper('security');
     }
 
 	
@@ -37,22 +38,36 @@ class User extends  CI_Controller{
 	public function saveuser()
 	{
 		
-		$data['name'] 		=  $this->input->post('name');
-		$data['email']	 	=  $this->input->post('email');
-		$data['address'] 	=  $this->input->post('address');
-		$data['sex']		=  $this->input->post('sex');
-		$data['mobile']		=  $this->input->post('mobile');
-		
-		if(empty($data['name']) || empty($data['email']) || empty($data['address']) || empty($data['sex']) || empty($data['mobile'])){
-			$this->load->library('session');
-			$session_data['message'] = "<p class='alert alert-warning'>Field Must Not be Empty</p>";
-			$this->session->set_userdata($session_data);
-			redirect("user/adduser");
-		}else{
-			$result = $this->UserModel->adduser($data);
-			redirect("user");
-		}
-		
+        $data = array(
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'address' => $this->input->post('address'),
+            'sex' => $this->input->post('sex'),
+            'mobile' => $this->input->post('mobile'),
+        );
+
+        $this->security->xss_clean($data);
+
+        $this->form_validation->set_rules('name', 'Name', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('address', 'Address', 'trim|required');
+        $this->form_validation->set_rules('sex', 'Sex', 'trim|required');
+        $this->form_validation->set_rules('mobile', 'Email', 'trim|required');
+
+
+         if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('template/inc/header.php');
+            $this->load->view('template/user/adduser.php');
+            $this->load->view('template/inc/footer.php');
+             
+        }else
+        {  
+            $result = $this->UserModel->adduser($data);
+            redirect('user/userlist');
+          
+        }
+
 		
 	}
 
@@ -91,17 +106,38 @@ class User extends  CI_Controller{
 
     public function updateuser()
     {
-        $id = $this->input->post("id");
+
+        $data = array(
+            'id' => $this->input->post("id"),
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'address' => $this->input->post('address'),
+            'sex' => $this->input->post('sex'),
+            'mobile' => $this->input->post('mobile'),
+        );
+
+        $this->security->xss_clean($data);
+
+        $this->form_validation->set_rules('name', 'Name', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('address', 'Address', 'trim|required');
+        $this->form_validation->set_rules('sex', 'Sex', 'trim|required');
+        $this->form_validation->set_rules('mobile', 'Email', 'trim|required');
+
+
+         if ($this->form_validation->run() == FALSE)
+        {
+          redirect()->back('');
+             
+        }else
+        {  
+            echo $this->UserModel->updateuser($data['id'],$data);
+            redirect("user");
+          
+        }
+
+
         
-        $new_data['name'] 	    = $this->input->post('name');
-        $new_data['email']  	= $this->input->post('email');
-        $new_data['address'] 	= $this->input->post('address');
-        $new_data['mobile'] 	= $this->input->post('mobile');
-        $new_data['sex'] 		=  $this->input->post('sex');
-
-
-        echo $this->UserModel->updateuser($id,$new_data);
-        redirect("user");
     }
 
     public function viewuser($userid = "")

@@ -6,13 +6,13 @@ $autoload['packages'] = array(
 	
 );
 
-$autoload['libraries'] = array("session");
+$autoload['libraries'] = array("session","form_validation");
 
 
 $autoload['drivers'] = array();
 
 
-$autoload['helper'] = array('url','path');
+$autoload['helper'] = array('url','path','form');
 
 
 $autoload['config'] = array();

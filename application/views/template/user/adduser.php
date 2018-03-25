@@ -3,11 +3,14 @@
     <div class="card">
         <h3>Add User</h3>
     </div>
+    
+    <?php echo form_open('user/saveuser') ?>
 
-
-    <form action="<?php echo site_url("user/saveuser"); ?>" method="post" style=" margin:  0 auto;">
+    
 
         <div class="col-md-6">
+
+
 
             <div class="form-group">
                 <label for="name">Name</label>
@@ -61,8 +64,16 @@
 
             <div class="form-group">
 
-                <input type="submit" class="form-control btn btn-primary" value="Login">
+                <input type="submit" class="form-control btn btn-primary" value="Save User">
             </div>
+
+
+             <?php if(validation_errors() != ""): ?>
+                <div class="alert alert-warning">
+                    <?php echo validation_errors(); ?>
+                </div>
+             <?php endif; ?>
+           
            
 					
 			<?php if(isset($message)){ //print error message
