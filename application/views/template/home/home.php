@@ -7,12 +7,17 @@
 </div>
 
 <div class="row">
-        
+        <?php
+
+            //echo "<pre>";
+           // print_r($totaluser);
+            //echo "</pre>";
+         ?>
         <div class="col-md-3">
             <div class="card w-75">
                 <div class="card-body">
                     <h3 class="card-title">Total Users</h3>
-                    <p class="card-text">224</p>
+                    <p class="card-text"><?php echo $totaluser; ?></p>
                     <a href="<?php echo site_url('user/userlist'); ?>" class="btn btn-primary">View All</a>
                 </div>
              </div>
@@ -22,7 +27,7 @@
             <div class="card w-75">
                 <div class="card-body">
                     <h3 class="card-title">Total Admistrator</h3>
-                    <p class="card-text">45</p>
+                    <p class="card-text"><?php echo $totaladmin; ?></p>
                     <a href="#" class="btn btn-primary">View</a>
                 </div>
              </div>
@@ -32,8 +37,8 @@
             <div class="card w-75">
                 <div class="card-body">
                     <h3 class="card-title">Last User</h3>
-                    <p class="card-text">Jhon Alen</p>
-                    <a href="#" class="btn btn-primary">Go</a>
+                    <p class="card-text"><?php echo $singleuser[0]->name; ?></p>
+                    <a href="<?php echo site_url('user/viewuser/').$singleuser[0]->id; ?>" class="btn btn-primary">Go</a>
                 </div>
              </div>
         </div>

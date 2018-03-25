@@ -58,13 +58,19 @@ class user extends  CI_Controller{
 
 
 
-	 public function userlist($value='')
+	 public function userlist($type = 'user')
     {
 	
-    	$data['userdata'] =	$this->UserModel->showusers();
-    	$this->load->view('template/inc/header.php');
-		$this->load->view('template/user/viewuser.php',$data);
-		$this->load->view('template/inc/footer.php');
+    	if($type == 'user')
+        {
+            $data['userdata'] = $this->UserModel->showusers();
+            $this->load->view('template/inc/header.php');
+            $this->load->view('template/user/viewuser.php',$data);
+            $this->load->view('template/inc/footer.php');
+        }
+        if($type == 'admin'){
+                echo "I am admin";
+        }
     	
     }
 
@@ -113,6 +119,7 @@ class user extends  CI_Controller{
         redirect('user');
     }
 	
-	
+
+
 	
 }

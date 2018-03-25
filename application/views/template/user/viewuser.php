@@ -14,6 +14,7 @@
             <th>Address</th>
             <th>Email</th>
             <th>Mobile</th>
+            <th>Designation</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -26,7 +27,8 @@
 					<td><?php echo $value['sex']; ?></td>
 					<td><?php echo $value['address']; ?></td>
 					<td><?php echo $value['email']; ?></td>
-					<td><?php echo $value['mobile']; ?></td>
+                    <td><?php echo $value['mobile']; ?></td>
+					<td><?php echo $value['designation']; ?></td>
 					<td><a href="<?php echo site_url("user/edituser")."/"; ?><?php echo $value['id']; ?>"><i class="fa fa-pencil btn btn-success"></i></a>&nbsp;&nbsp;<a href="<?php echo site_url('user/viewuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-eye btn btn-primary" ></i></a>&nbsp;&nbsp;<a href="<?php echo site_url('user/deleteuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-trash-o btn btn-danger" onclick="return confirm('are you sure to delete?')" ></i></a></td>
 				</tr>
             <?php endforeach; ?>

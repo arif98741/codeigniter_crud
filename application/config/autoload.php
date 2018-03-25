@@ -21,4 +21,4 @@ $autoload['config'] = array();
 $autoload['language'] = array();
 
 
-$autoload['model'] = array("HomeModel","LoginModel");
+$autoload['model'] = array("HomeModel","LoginModel","UserModel");
