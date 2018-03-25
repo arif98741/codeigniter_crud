@@ -27,8 +27,6 @@
 
 
 
-
-
             <div class="form-group">
                 <label for="name">Mobile</label>
                 <input type="text" name="mobile"  class="form-control" >

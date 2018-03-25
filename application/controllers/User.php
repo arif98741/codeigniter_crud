@@ -2,6 +2,13 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 class user extends  CI_Controller{
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('UserModel');
+    }
+
 	
 	public function index()
     {
@@ -13,7 +20,7 @@ class user extends  CI_Controller{
     public function showusers($value='')
     {
 		
-    	$data['userdata'] =	$this->HomeModel->showusers();
+    	$data['userdata'] =	$this->UserModel->showusers();
     	return $data;
     }
 
@@ -21,7 +28,7 @@ class user extends  CI_Controller{
     public function adduser()
 	{
 		$this->load->view('template/inc/header.php');
-		$this->load->view('template/home/adduser.php');
+		$this->load->view('template/user/adduser.php');
 		$this->load->view('template/inc/footer.php');
 	}
 
@@ -40,9 +47,9 @@ class user extends  CI_Controller{
 			$this->load->library('session');
 			$session_data['message'] = "<p class='alert alert-warning'>Field Must Not be Empty</p>";
 			$this->session->set_userdata($session_data);
-			redirect("Home/adduser");
+			redirect("user/adduser");
 		}else{
-			$result = $this->HomeModel->adduser($data);
+			$result = $this->UserModel->adduser($data);
 			redirect("user");
 		}
 		
@@ -54,7 +61,7 @@ class user extends  CI_Controller{
 	 public function userlist($value='')
     {
 	
-    	$data['userdata'] =	$this->HomeModel->showusers();
+    	$data['userdata'] =	$this->UserModel->showusers();
     	$this->load->view('template/inc/header.php');
 		$this->load->view('template/user/viewuser.php',$data);
 		$this->load->view('template/inc/footer.php');
@@ -67,12 +74,12 @@ class user extends  CI_Controller{
     {
         $this->load->view('template/inc/header.php');
         $data = array(
-            "userdata"	=> $this->HomeModel->getsingleuser($userid)
+            "userdata"	=> $this->UserModel->getsingleuser($userid)
 
         );
-        $this->load->view("template/home/edituser",$data);
-        //$this->HomeModel->getsingleuser($userid);
-        $this->HomeModel->edituser($userid);
+        $this->load->view("template/user/edituser",$data);
+        //$this->UserModel->getsingleuser($userid);
+        $this->UserModel->edituser($userid);
         $this->load->view('template/inc/footer.php');
     }
 
@@ -87,22 +94,22 @@ class user extends  CI_Controller{
         $new_data['sex'] 		=  $this->input->post('sex');
 
 
-        echo $this->HomeModel->updateuser($id,$new_data);
+        echo $this->UserModel->updateuser($id,$new_data);
         redirect("user");
     }
 
     public function viewuser($userid = "")
     {
        $this->load->view('template/inc/header.php');
-	   $data['userdata'] = $this->HomeModel->getsingleuser($userid);
-       $this->load->view('template/home/viewuser.php',$data);
+	   $data['userdata'] = $this->UserModel->getsingleuser($userid);
+       $this->load->view('template/user/viewsingleuser.php',$data);
        $this->load->view('template/inc/footer.php');
     }
 	
 
      public function deleteuser($userid = "")
     {
-        $data['userdata'] =$this->HomeModel->deleteuser($userid);
+        $data['userdata'] =$this->UserModel->deleteuser($userid);
         redirect('user');
     }
 	

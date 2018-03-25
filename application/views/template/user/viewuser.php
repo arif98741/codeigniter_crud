@@ -5,7 +5,7 @@
     </div>
 
     <table class="table table-bordered text-center">
-
+        
         <thead>
         <tr class="bg-primary">
             <th>Serial</th>
@@ -27,7 +27,7 @@
 					<td><?php echo $value['address']; ?></td>
 					<td><?php echo $value['email']; ?></td>
 					<td><?php echo $value['mobile']; ?></td>
-					<td><a href="<?php echo site_url("user/edituser")."/"; ?><?php echo $value['id']; ?>"><i class="fa fa-pencil btn btn-success"></i></a>&nbsp;<a href="<?php echo site_url('user/deleteuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-trash-o btn btn-danger" onclick="return confirm('are you sure to delete?')" ></i></a>&nbsp;<a href="<?php echo site_url('user/viewuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-eye btn btn-primary" ></i></a></td>
+					<td><a href="<?php echo site_url("user/edituser")."/"; ?><?php echo $value['id']; ?>"><i class="fa fa-pencil btn btn-success"></i></a>&nbsp;&nbsp;<a href="<?php echo site_url('user/viewuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-eye btn btn-primary" ></i></a>&nbsp;&nbsp;<a href="<?php echo site_url('user/deleteuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-trash-o btn btn-danger" onclick="return confirm('are you sure to delete?')" ></i></a></td>
 				</tr>
             <?php endforeach; ?>
         </tbody>
