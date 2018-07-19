@@ -47,11 +47,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a href="<?php echo site_url("Login/registration"); ?>">Registration</a>
                         </li>
 						
-						
 
                         <li>
                             <a href="#">Logout</a>
                         </li>
+
+                         <li>
+                            <a href="https://github.com/arif98741/codeigniter_crud" target="_blank">See in Github</a>
+                        </li>
+
+
 						
 						
 
