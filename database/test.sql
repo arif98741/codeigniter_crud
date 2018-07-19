@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2018 at 11:59 PM
+-- Generation Time: Jul 19, 2018 at 09:35 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -37,6 +37,7 @@ CREATE TABLE `usertable` (
   `mobile` varchar(15) NOT NULL,
   `address` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `designation` varchar(100) NOT NULL,
   `image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -44,12 +45,13 @@ CREATE TABLE `usertable` (
 -- Dumping data for table `usertable`
 --
 
-INSERT INTO `usertable` (`id`, `name`, `sex`, `username`, `password`, `mobile`, `address`, `email`, `image`) VALUES
-(180, 'George Pi', 'male', '0', '0', '+1-58-58547-587', 'New York,CA-1205', 'george@gmail.co', ''),
-(181, 'Calvin Pr', 'male', '0', '0', '+1-5874-5226', 'California', 'calvin.pr@gmail.com', ''),
-(182, 'Albert Newsen', 'male', '', '', '+89-9856-55', 'Berlin, Germany', 'albert@gmail.com', ''),
-(183, 'Richmond Hel', 'male', '', '', '+87-85742-365', 'DC, Lane , WX/123', 'hel.343@hotmail.com', ''),
-(184, 'Rainok Heiden', 'male', '', '', '+1-85-6955', 'Los Angels, 12/ Newton Street', 'heiden@gmail.com', '');
+INSERT INTO `usertable` (`id`, `name`, `sex`, `username`, `password`, `mobile`, `address`, `email`, `designation`, `image`) VALUES
+(180, 'George Pi', 'male', '0', '0', '+1-58-58547-587', 'New York,CA-1205', 'george@gmail.co', 'General Manageer', ''),
+(181, 'Calvin Pr', 'male', '0', '0', '+1-5874-5226', 'California', 'calvin.pr@gmail.com', 'Project Manager', ''),
+(182, 'Albert Newsen', 'male', '', '', '+89-9856-55', 'Berlin, Germany', 'albert@gmail.com', 'Developer', ''),
+(183, 'Richmond Hel', 'male', '', '', '+87-85742-365', 'DC, Lane , WX/123', 'hel.343@hotmail.com', 'Assistant', ''),
+(184, 'Rainok Heiden', 'male', '', '', '+1-85-6955', 'Los Angels, 12/ Newton Street', 'heiden@gmail.com', 'Developer', ''),
+(185, 'Alicia Kristens', 'Female', 'alicia453', '123', '+02-365-552255', 'New Jersys', 'alicia.pm@gmail.coms', 'Project Manager', 'dome.jpg');
 
 --
 -- Indexes for dumped tables
@@ -69,7 +71,7 @@ ALTER TABLE `usertable`
 -- AUTO_INCREMENT for table `usertable`
 --
 ALTER TABLE `usertable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
