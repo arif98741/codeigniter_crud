@@ -3,6 +3,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends  CI_Controller{
 
+    /*
+    !--------------------------------------------------------
+    !       Constructor Load During Creation of Object
+    !--------------------------------------------------------
+    */
     public function __construct()
     {
         parent::__construct();
@@ -10,7 +15,11 @@ class User extends  CI_Controller{
         $this->load->helper('security');
     }
 
-	
+	/*
+    !--------------------------------------------------------
+    !       Default Function for user Model
+    !--------------------------------------------------------
+    */
 	public function index()
     {
        $this->load->view('template/inc/header.php');
@@ -18,6 +27,12 @@ class User extends  CI_Controller{
        $this->load->view('template/inc/footer.php');
     }
 
+
+    /*
+    !--------------------------------------------------------
+    !       Show user details in page
+    !--------------------------------------------------------
+    */
     public function showusers($value='')
     {
 		
@@ -26,6 +41,11 @@ class User extends  CI_Controller{
     }
 
 
+    /*
+    !--------------------------------------------------------
+    !       Add User Page
+    !--------------------------------------------------------
+    */
     public function adduser()
 	{
 		$this->load->view('template/inc/header.php');
@@ -34,16 +54,20 @@ class User extends  CI_Controller{
 	}
 
 
-
+    /*
+    !--------------------------------------------------------
+    !       Save User Data from Add User
+    !--------------------------------------------------------
+    */
 	public function saveuser()
 	{
 		
         $data = array(
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
+            'name'    => $this->input->post('name'),
+            'email'   => $this->input->post('email'),
             'address' => $this->input->post('address'),
-            'sex' => $this->input->post('sex'),
-            'mobile' => $this->input->post('mobile'),
+            'sex'     => $this->input->post('sex'),
+            'mobile'  => $this->input->post('mobile'),
         );
 
         $this->security->xss_clean($data);
@@ -54,8 +78,7 @@ class User extends  CI_Controller{
         $this->form_validation->set_rules('sex', 'Sex', 'trim|required');
         $this->form_validation->set_rules('mobile', 'Email', 'trim|required');
 
-
-         if ($this->form_validation->run() == FALSE)
+        if ($this->form_validation->run() == FALSE)
         {
             $this->load->view('template/inc/header.php');
             $this->load->view('template/user/adduser.php');
@@ -64,7 +87,7 @@ class User extends  CI_Controller{
         }else
         {  
             $result = $this->UserModel->adduser($data);
-            redirect('user/userlist');
+            redirect('user/userlist'); //redirect to userlist 
           
         }
 
@@ -72,8 +95,12 @@ class User extends  CI_Controller{
 	}
 
 
-
-	 public function userlist($type = 'user')
+    /*
+    !--------------------------------------------------------
+    !       Show users
+    !--------------------------------------------------------
+    */
+	public function userlist($type = 'user')
     {
 	
     	if($type == 'user')
@@ -90,13 +117,16 @@ class User extends  CI_Controller{
     }
 
 
-
+    /*
+    !--------------------------------------------------------
+    !       Edit User
+    !--------------------------------------------------------
+    */
     public function edituser($userid = "")
     {
         $this->load->view('template/inc/header.php');
         $data = array(
             "userdata"	=> $this->UserModel->getsingleuser($userid)
-
         );
         $this->load->view("template/user/edituser",$data);
         //$this->UserModel->getsingleuser($userid);
@@ -104,6 +134,12 @@ class User extends  CI_Controller{
         $this->load->view('template/inc/footer.php');
     }
 
+
+    /*
+    !--------------------------------------------------------
+    !       Update User Data to Database
+    !--------------------------------------------------------
+    */
     public function updateuser()
     {
 
@@ -140,6 +176,12 @@ class User extends  CI_Controller{
         
     }
 
+
+    /*
+    !--------------------------------------------------------
+    !       View Single User in Viewuser
+    !--------------------------------------------------------
+    */
     public function viewuser($userid = "")
     {
        $this->load->view('template/inc/header.php');
@@ -149,7 +191,13 @@ class User extends  CI_Controller{
     }
 	
 
-     public function deleteuser($userid = "")
+
+    /*
+    !--------------------------------------------------------
+    !      Delete Single User
+    !--------------------------------------------------------
+    */
+    public function deleteuser($userid = "")
     {
         $data['userdata'] =$this->UserModel->deleteuser($userid);
         redirect('user');

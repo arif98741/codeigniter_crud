@@ -3,7 +3,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller{
-	
+
+	/*
+	!--------------------------------------------
+	!  Constructor Load During Creation of Object
+	!--------------------------------------------
+	*/	
 	public function __construct()
 	{
 		parent::__construct();
@@ -11,6 +16,11 @@ class Login extends CI_Controller{
 		
 	}
 	
+	/*
+	!--------------------------------------------
+	!  Default Method for login
+	!--------------------------------------------
+	*/	
     public function index()
     {
        $this->load->view('template/inc/header.php');
@@ -19,6 +29,11 @@ class Login extends CI_Controller{
     }
 	
 	
+	/*
+	!--------------------------------------------
+	!  Save Registration Data
+	!--------------------------------------------
+	*/	
 	public function registration()
     {
 		
@@ -54,9 +69,13 @@ class Login extends CI_Controller{
     }
 	
 	
+	/*
+	!--------------------------------------------
+	!   Login Layout Page
+	!--------------------------------------------
+	*/	
 	public function login()
     {
-
        $this->load->view('template/inc/header.php');
        $this->load->view('template/auth/login.php');
        $this->load->view('template/inc/footer.php');
@@ -64,11 +83,7 @@ class Login extends CI_Controller{
        $username = $this->input->post("username");
        $password = $this->input->post("password");
        $status = $this->LoginModel->login($username,$password);
-
-
     }
-	
-	
 	
 }
 
