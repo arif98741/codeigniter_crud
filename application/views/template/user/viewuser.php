@@ -4,7 +4,7 @@
         <h3>Users List</h3>
     </div>
 
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered text-center" id="datatable">
         
         <thead>
         <tr class="bg-primary">
