@@ -4,7 +4,8 @@
         <h3>Add User</h3>
     </div>
     
-    <?php echo form_open('user/saveuser') ?>
+    <?php echo form_open_multipart('user/saveuser');?>
+
 
     
 
@@ -51,8 +52,15 @@
                     <input type="text" name="username"  class="form-control" >
                 </div>
 
-
             </div>
+            
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">User Photo</label>
+                    <input type="file" name="userphoto" class="form-control">
+                </div>
+            </div>
+
             <div class="col-md-12">
                  <div class="form-group">
 

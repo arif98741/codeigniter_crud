@@ -63,11 +63,11 @@ class User extends  CI_Controller{
 	{
 		
         $data = array(
-            'name'    => $this->input->post('name'),
-            'email'   => $this->input->post('email'),
-            'address' => $this->input->post('address'),
-            'sex'     => $this->input->post('sex'),
-            'mobile'  => $this->input->post('mobile'),
+            'name'      => $this->input->post('name'),
+            'email'     => $this->input->post('email'),
+            'address'   => $this->input->post('address'),
+            'sex'       => $this->input->post('sex'),
+            'mobile'    => $this->input->post('mobile'),
             'username'  => $this->input->post('username'),
         );
 
@@ -90,10 +90,65 @@ class User extends  CI_Controller{
         }else
         {  
             $result = $this->UserModel->adduser($data);
-            redirect('user/userlist'); //redirect to userlist 
+            if ($result == TRUE) {
+                $status = $this->do_upload();
+
+                if ($status == true) {
+                    $file_name = $status['upload_data']['file_name'];
+
+                    $db = $this->load->database("default",TRUE);
+
+                    $db->select("*");
+                    $db->order_by('id', 'DESC');
+                    $db->limit(1);
+                    $query = $db->get('usertable')->result_array();
+
+
+                    $db->set('image', $file_name);
+                    $db->where('id', $query[0]['id']);
+                    $db->update('usertable'); 
+
+                    echo "<pre>";
+                    print_r($query);
+                    echo "</pre>";
+                    exit();
+                }
+                
+            }else{
+                 redirect('user/adduser');
+            }
+            
+          
         }
 
 	}
+
+
+    /*
+    !--------------------------------------------------------------------
+    !   User Photo Upload Function
+    !--------------------------------------------------------------------
+    !*/
+    public function do_upload()
+    {
+        $config['upload_path']    = './uploads/userphoto/';
+        $config['allowed_types']  = 'gif|jpg|png';
+        $config['max_size']       = 10000;
+        $config['max_width']      = 10000;
+        $config['max_height']     = 10000;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('userphoto'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            return $error;
+        }else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            return $data;
+        }
+    }
 
 
     /*
@@ -150,7 +205,7 @@ class User extends  CI_Controller{
             'email' => $this->input->post('email'),
             'address' => $this->input->post('address'),
             'sex' => $this->input->post('sex'),
-            'mobile' => $this->input->post('mobile'),
+            'mobile' => $this->input->post('mobile')
         );
 
         $this->security->xss_clean($data);
@@ -162,7 +217,7 @@ class User extends  CI_Controller{
         $this->form_validation->set_rules('mobile', 'Email', 'trim|required');
 
 
-         if ($this->form_validation->run() == FALSE)
+        if ($this->form_validation->run() == FALSE)
         {
           redirect()->back('');
              

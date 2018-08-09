@@ -36,9 +36,10 @@
                 <div class="form-group">
                     <label for="name">Sex</label>
                     <select  name="sex"  class="form-control">
-                        <option value="" disabled="" selected="">Select Gender</option>
+
 
                         <?php if ($userdata[0]['sex'] == "male"): ?>
+                            
                             <option value="<?php echo $userdata[0]['sex']; ?>" selected="">Male</option>
                         <?php else: ?>
                             <option value="<?php echo $userdata[0]['sex']; ?>" selected="">Female</option>
