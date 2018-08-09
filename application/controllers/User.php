@@ -187,7 +187,7 @@ class User extends  CI_Controller{
     {
         if($this->session->has_userdata('login')){
 
-            if ($userid == $this->session->id || $this->sessin->designation == 'admin') {
+            if ($userid == $this->session->id || $this->session->designation == 'admin') {
                 $this->load->view('template/inc/header.php');
                 $data = array(
                     "userdata"  => $this->UserModel->getsingleuser($userid)

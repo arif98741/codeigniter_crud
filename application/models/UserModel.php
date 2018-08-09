@@ -9,8 +9,10 @@
 
 
         public function showusers()
-        {
-            $result_set = $this->db->query("select * from usertable order by id desc");
+        {   
+            $this->db->order_by('name','ASC');
+            //$result_set = $this->db->query("select * from usertable order by id desc");
+            $result_set= $this->db->get('usertable');
             return $result_set->result_array();
         }
 		

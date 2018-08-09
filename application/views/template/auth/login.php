@@ -16,16 +16,13 @@
 
                 <div class="form-group">
                     <label for="name">Password</label>
-                    <input type="text" name="password"  class="form-control">
+                    <input type="password" name="password"  class="form-control">
                 </div>
 
                 <div class="form-group">
-                   
                     <input type="submit" value="Login"  class="btn btn-success">
                 </div>
-                
             </div>
-
             <div class="col-md-6">
 
                  <?php if(isset($error)): ?>
