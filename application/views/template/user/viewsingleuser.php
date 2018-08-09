@@ -4,11 +4,14 @@
         <h3>View User</h3>
     </div>
     <div class="well spacing-top col-md-6">
-        <h4>ID : <?php echo $userdata[0]['id']; ?></h4>
-        <h4>Name : <?php echo $userdata[0]['name']; ?></h4>
-        <h4>Sex : <?php echo $userdata[0]['sex']; ?></h4>
-        <h4>Mobile : <?php echo $userdata[0]['mobile']; ?></h4>
-        <h4>Address : <?php echo $userdata[0]['address']; ?></h4>   
+        <h4><strong>ID :</strong> <?php echo $userdata[0]['id']; ?></h4>
+        <h4><strong>Name :</strong> <?php echo $userdata[0]['name']; ?></h4>
+        <h4><strong>Sex :</strong> <?php echo $userdata[0]['sex']; ?></h4>
+        <h4><strong>Mobile :</strong> <?php echo $userdata[0]['mobile']; ?></h4>
+        <h4><strong>Email :</strong> <?php echo $userdata[0]['email']; ?></h4>
+        <h4><strong>Username :</strong> <?php echo $userdata[0]['username']; ?></h4>
+        <h4><strong>Designation :</strong> <?php echo $userdata[0]['designation']; ?></h4>
+        <h4><strong>Address :</strong> <?php echo $userdata[0]['address']; ?></h4>   
     </div>
     
 

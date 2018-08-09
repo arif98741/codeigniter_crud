@@ -68,30 +68,31 @@ class User extends  CI_Controller{
             'address' => $this->input->post('address'),
             'sex'     => $this->input->post('sex'),
             'mobile'  => $this->input->post('mobile'),
+            'username'  => $this->input->post('username'),
         );
 
         $this->security->xss_clean($data);
 
-        $this->form_validation->set_rules('name', 'Name', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('address', 'Address', 'trim|required');
-        $this->form_validation->set_rules('sex', 'Sex', 'trim|required');
-        $this->form_validation->set_rules('mobile', 'Email', 'trim|required');
+        $this->form_validation->set_rules('name', 'Name', 'min_length[3]|max_length[12]');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('address', 'Address', 'required');
+        $this->form_validation->set_rules('sex', 'Sex', 'required');
+        $this->form_validation->set_rules('mobile', 'Email', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|min_length[3]|max_length[12]');
 
         if ($this->form_validation->run() == FALSE)
         {
             $this->load->view('template/inc/header.php');
-            $this->load->view('template/user/adduser.php');
+            $this->load->view('template/user/adduser.php',array('error' => $this->form_validation));
             $this->load->view('template/inc/footer.php');
+            //redirect('user/adduser'); //redirect to userlist
              
         }else
         {  
             $result = $this->UserModel->adduser($data);
             redirect('user/userlist'); //redirect to userlist 
-          
         }
 
-		
 	}
 
 

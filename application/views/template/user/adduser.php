@@ -8,83 +8,85 @@
 
     
 
-        <div class="col-md-6">
+        <div class="row">
 
 
 
-            <div class="form-group">
+            <div class="col-md-6">
+                <div class="form-group">
                 <label for="name">Name</label>
-				<input type="text" name="name" class="form-control">
-            </div>
-
-
-            <div class="form-group">
-                <label for="name">Email</label>
-                <input type="text" name="email"  class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="name">Address</label>
-                <input type="text" name="address"  class="form-control">
-            </div>
-
-
-
-            <div class="form-group">
-                <label for="name">Mobile</label>
-                <input type="text" name="mobile"  class="form-control" >
-            </div>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <div class="form-group">
-                <label for="name">Sex</label>
-                <select  name="sex"  class="form-control">
-
-					<option value="male" >Male</option>
-			  
-					<option value="female">Female</option>
-                    
-                </select>
-
-
-            </div>
-
-
-
-            <div class="form-group">
-
-                <input type="checkbox" value="yes">&nbsp;I have read terms and conditions properly
-            </div>
-
-
-
-
-            <div class="form-group">
-
-                <input type="submit" class="form-control btn btn-primary" value="Save User">
-            </div>
-
-
-             <?php if(validation_errors() != ""): ?>
-                <div class="alert alert-warning">
-                    <?php echo validation_errors(); ?>
+                <input type="text" name="name" class="form-control">
                 </div>
-             <?php endif; ?>
-           
-           
-					
-			<?php if(isset($message)){ //print error message
-				echo $message;
-			} ?>
-				
+
+
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="text" name="email"  class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Address</label>
+                    <input type="text" name="address"  class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                 <div class="form-group">
+                    <label for="name">Mobile</label>
+                    <input type="text" name="mobile"  class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="name">Sex</label>
+
+                    <select  name="sex"  class="form-control">
+                        <option value="" disabled="" selected="">Select</option>
+                        <option value="male" >Male</option>
+                        <option value="female">Female</option>
+                        
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="text" name="username"  class="form-control" >
+                </div>
+
+
+            </div>
+            <div class="col-md-12">
+                 <div class="form-group">
+
+                    <input type="checkbox" value="yes">&nbsp;I have read terms and conditions properly
+                </div>
+                <div class="form-group">
+
+                    <input type="submit" class="form-control btn btn-primary" value="Save User" style="max-width: 400px; margin: 0 auto;">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+
+                 <?php if(validation_errors() != ""): ?>
+                    <div class="alert alert-warning">
+                        <?php echo validation_errors(); ?>
+                    </div>
+                 <?php endif; ?>
+
+                <?php if(isset($message)){ //print error message
+                    echo $message;
+                } ?>
+                
+             </div>
+
+
         </div>
+
+        
 
 
     </form>
 	
 
 </div>
-<a href="<?php echo site_url("Home"); ?>" class="btn btn-primary">Back</a>
+<a href="<?php echo site_url("Home"); ?>" class="btn btn-danger">Back</a>

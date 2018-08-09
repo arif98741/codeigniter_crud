@@ -15,7 +15,7 @@
         }
 		
 		
-		 public function adduser($data)
+		public function adduser($data)
         {
 			return $this->db->insert("usertable",$data);
             //$result_set = $this->db->query("select * from usertable");
