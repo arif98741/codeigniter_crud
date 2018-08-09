@@ -31,7 +31,18 @@
 					<td><?php echo $value['username']; ?></td>
                     <td><?php echo $value['mobile']; ?></td>
 					<td><?php echo $value['designation']; ?></td>
-					<td><a href="<?php echo site_url("user/edituser")."/"; ?><?php echo $value['id']; ?>"><i class="fa fa-pencil btn btn-success"></i></a>&nbsp;&nbsp;<a href="<?php echo site_url('user/viewuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-eye btn btn-primary" ></i></a>&nbsp;&nbsp;<a href="<?php echo site_url('user/deleteuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-trash-o btn btn-danger" onclick="return confirm('are you sure to delete?')" ></i></a></td>
+					<td>
+                        <a href="<?php echo site_url('user/viewuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-eye btn btn-primary" ></i></a>&nbsp;&nbsp;
+                        
+                        <?php if($this->session->has_userdata('login') && $this->session->designation == 'admin'): ?>
+
+                        <a href="<?php echo site_url("user/edituser")."/"; ?><?php echo $value['id']; ?>"><i class="fa fa-pencil btn btn-success"></i></a>&nbsp;&nbsp;
+
+                        
+                        <a href="<?php echo site_url('user/deleteuser').'/'; ?><?php echo $value['id']; ?>" ><i class="fa fa-trash-o btn btn-danger" onclick="return confirm('are you sure to delete?')" ></i></a>
+
+                    <?php endif; ?>
+                    </td>
 				</tr>
             <?php endforeach; ?>
         </tbody>

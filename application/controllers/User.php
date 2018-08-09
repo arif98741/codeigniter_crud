@@ -48,9 +48,14 @@ class User extends  CI_Controller{
     */
     public function adduser()
 	{
-		$this->load->view('template/inc/header.php');
-		$this->load->view('template/user/adduser.php');
-		$this->load->view('template/inc/footer.php');
+        if($this->session->has_userdata('login') && $this->session->designation == 'admin'){
+            $this->load->view('template/inc/header.php');
+            $this->load->view('template/user/adduser.php');
+            $this->load->view('template/inc/footer.php');
+        }else{
+            redirect('home');
+        }
+		
 	}
 
 
@@ -180,14 +185,21 @@ class User extends  CI_Controller{
     */
     public function edituser($userid = "")
     {
-        $this->load->view('template/inc/header.php');
-        $data = array(
-            "userdata"	=> $this->UserModel->getsingleuser($userid)
-        );
-        $this->load->view("template/user/edituser",$data);
-        //$this->UserModel->getsingleuser($userid);
-        $this->UserModel->edituser($userid);
-        $this->load->view('template/inc/footer.php');
+        if($this->session->has_userdata('login')){
+            
+            $this->load->view('template/inc/header.php');
+            $data = array(
+                "userdata"  => $this->UserModel->getsingleuser($userid)
+            );
+            $this->load->view("template/user/edituser",$data);
+            //$this->UserModel->getsingleuser($userid);
+            $this->UserModel->edituser($userid);
+            $this->load->view('template/inc/footer.php');
+        }else{
+            redirect('home');
+        }
+
+        
     }
 
 
@@ -255,9 +267,16 @@ class User extends  CI_Controller{
     */
     public function deleteuser($userid = "")
     {
-        $data['userdata'] =$this->UserModel->deleteuser($userid);
-        redirect('user');
+        if($this->session->has_userdata('login') && $this->session->designation == 'admin'){
+            $data['userdata'] =$this->UserModel->deleteuser($userid);
+            redirect('user');
+        }else{
+            redirect('user');
+        }
+        
     }
+
+    
 	
 
 

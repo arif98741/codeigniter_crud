@@ -37,29 +37,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a href="<?php echo site_url('user/userlist'); ?>">User List</a>
 
                         </li>
+                        
+
+                        <?php if($this->session->has_userdata('login') && $this->session->designation == 'admin'): ?>
+
                         <li>
                             <a href="<?php echo site_url("user/adduser"); ?>">Add User</a>
                         </li>
+                        <?php endif; ?>
+                        <?php if($this->session->has_userdata('login')): ?>
                         <li>
-                            <a href="<?php echo site_url("Login/login"); ?>">Login</a>
+                            <a href="user/profile/<?php echo $this->session->id; ?>">Profile</a>
                         </li>
+                        <?php endif; ?>
+
 
                         <li>
-                            <a href="<?php echo site_url("Login/registration"); ?>">Registration</a>
-                        </li>
-						
+                            <?php if ($this->session->has_userdata('login')): ?>
 
-                        <li>
-                            <a href="#">Logout</a>
+                                <a href="<?php echo site_url("login/logout"); ?>">Logout</a>
+
+                            <?php else: ?>
+
+                                <a href="<?php echo site_url("login"); ?>">Login</a>
+                            <?php endif; ?>
+                            
                         </li>
+
+                       <!--  <li>
+                           <a href="<?php echo site_url("Login/registration"); ?>">Registration</a>
+                       </li> -->
 
                          <li>
                             <a href="https://github.com/arif98741/codeigniter_crud" target="_blank">See in Github</a>
                         </li>
-
-
-						
-						
 
                     </ul>
                 </div>

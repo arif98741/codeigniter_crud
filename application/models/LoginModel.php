@@ -39,9 +39,8 @@
            $result =  $this->db->get_where("usertable",$where);
            if($result)
            {
-               return true;
-           }
-           else{
+              return $result;
+           }else{
                return false;
            }
         }

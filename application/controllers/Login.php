@@ -12,8 +12,6 @@ class Login extends CI_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library("session");
-		
 	}
 	
 	/*
@@ -23,9 +21,14 @@ class Login extends CI_Controller{
 	*/	
     public function index()
     {
-       $this->load->view('template/inc/header.php');
+      if($this->session->has_userdata('login')){
+      	redirect('home');
+      }else{
+      	$this->load->view('template/inc/header.php');
        $this->load->view('template/auth/login.php');
        $this->load->view('template/inc/footer.php');
+      }
+       
     }
 	
 	
@@ -33,7 +36,7 @@ class Login extends CI_Controller{
 	!--------------------------------------------
 	!  Save Registration Data
 	!--------------------------------------------
-	*/	
+		
 	public function registration()
     {
 		
@@ -66,7 +69,7 @@ class Login extends CI_Controller{
 		}
 		
       
-    }
+    }*/
 	
 	
 	/*
@@ -76,15 +79,41 @@ class Login extends CI_Controller{
 	*/	
 	public function login()
     {
-       $this->load->view('template/inc/header.php');
-       $this->load->view('template/auth/login.php');
-       $this->load->view('template/inc/footer.php');
 
        $username = $this->input->post("username");
        $password = $this->input->post("password");
-       $status = $this->LoginModel->login($username,$password);
+       $status 	 = $this->LoginModel->login($username,$password);
+       if ($status->result_id->num_rows > 0) {
+
+	       $data 	 = $status->result_object();
+	       $session['login'] = true;
+	       $session['designation'] = $data[0]->designation;
+	       $session['id'] = $data[0]->id;
+	       
+	       $this->session->set_userdata($session); //
+	       redirect('home');
+       }else{
+       	   redirect("login");
+       }
+      
     }
-	
+
+    /*
+	!--------------------------------------------
+	!     User Logout
+	!--------------------------------------------
+	*/	
+	public function logout()
+    {
+    	$this->session->unset_userdata('login');
+    	$this->session->unset_userdata('designation');
+
+    	redirect('login');
+    	// echo "<pre>";
+    	// print_r($this->session->userdata());
+    	// echo "</pre>";
+    }
+
 }
 
 ?>
