@@ -27,5 +27,11 @@ Inside folder make a folder called codeignite. Inside codeigniter keep all files
 Make a database called test(as your own wish. if you do that, then change the database connection credentials at application/config/database.php) in your phpmyadmin. import the database there(can be found at codeigniter_crud-master/database/test.sql)
 
 ## Login/Registration
-We Still have not included registration/login/forgot feature. This will be added soon
+Login Feature 
+Registration is done by administration by default after login
+
+##Login Details
+Username: admin
+Password: admin
+
 	
