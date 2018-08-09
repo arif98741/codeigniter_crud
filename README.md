@@ -30,8 +30,8 @@ Make a database called test(as your own wish. if you do that, then change the da
 Login Feature 
 Registration is done by administration by default after login
 
-##Login Details
-Username: admin
+## Login Details
+Username: admin <br>
 Password: admin
 
 	
