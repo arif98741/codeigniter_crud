@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php endif; ?>
                         <?php if($this->session->has_userdata('login')): ?>
                         <li>
-                            <a href="user/profile/<?php echo $this->session->id; ?>">Profile</a>
+                            <a href="<?php echo base_url();?>user/profile/<?php echo $this->session->id; ?>">Profile</a>
                         </li>
                         <?php endif; ?>
 

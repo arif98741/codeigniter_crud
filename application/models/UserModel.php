@@ -69,11 +69,15 @@
         }
 
 
-
-
         public function lastUser()
         {
             $result = $this->db->query("select * from usertable order by id desc limit 1");
+            //return $result->result_array();   
+            return $result->result_object();   
+        }
+
+        public function profile($id){
+            $result = $this->db->query("select * from usertable where id='$id' limit 1");
             //return $result->result_array();   
             return $result->result_object();   
         }

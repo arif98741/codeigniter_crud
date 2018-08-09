@@ -186,15 +186,19 @@ class User extends  CI_Controller{
     public function edituser($userid = "")
     {
         if($this->session->has_userdata('login')){
-            
-            $this->load->view('template/inc/header.php');
-            $data = array(
-                "userdata"  => $this->UserModel->getsingleuser($userid)
-            );
-            $this->load->view("template/user/edituser",$data);
-            //$this->UserModel->getsingleuser($userid);
-            $this->UserModel->edituser($userid);
-            $this->load->view('template/inc/footer.php');
+
+            if ($userid == $this->session->id || $this->sessin->designation == 'admin') {
+                $this->load->view('template/inc/header.php');
+                $data = array(
+                    "userdata"  => $this->UserModel->getsingleuser($userid)
+                );
+                $this->load->view("template/user/edituser",$data);
+                //$this->UserModel->getsingleuser($userid);
+                $this->UserModel->edituser($userid);
+                $this->load->view('template/inc/footer.php');
+            }else{
+                redirect('home');
+            }
         }else{
             redirect('home');
         }
@@ -276,7 +280,41 @@ class User extends  CI_Controller{
         
     }
 
-    
+
+     /*
+    !--------------------------------------------------------
+    !      Delete Single User
+    !--------------------------------------------------------
+    */
+    public function profile($userid = "")
+    {
+        
+        $status = $this->UserModel->profile($userid);
+        if (count($status) > 0) {
+            
+
+            $data['userdata'] = $this->UserModel->profile($userid);
+            $this->load->view('template/inc/header.php');
+            $this->load->view('template/user/profile',$data);
+            $this->load->view('template/inc/footer.php');
+
+
+        }else{
+            $data['pagenotfound'] = 'Page You are searcing is not found';
+            
+            $this->load->view('template/inc/header.php');
+             $this->load->view('template/error/error_404',$data);
+            $this->load->view('template/inc/footer.php');
+           
+        }
+       
+        
+    }
+
+
+
+
+
 	
 
 
