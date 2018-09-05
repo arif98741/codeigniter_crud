@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="<?php echo site_url('user/userlist'); ?>">User List</a>
+                            <a href="<?php echo site_url('user/userlist'); ?>" class="active">User List</a>
 
                         </li>
                         
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php endif; ?>
                         <?php if($this->session->has_userdata('login')): ?>
                         <li>
-                            <a href="<?php echo base_url();?>user/profile/<?php echo $this->session->id; ?>">Profile</a>
+                            <a href="<?php echo base_url();?>user/profile/<?php echo $this->session->id; ?>">Profile(<?php echo $this->session->designation; ?>)</a>
                         </li>
                         <?php endif; ?>
 
@@ -69,6 +69,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                        </li> -->
 
                          <li>
+                            <a href="https://github.com/arif98741/codeigniter_crud/graphs/contributors" target="_blank">Contributors</a>
+                        </li><li>
                             <a href="https://github.com/arif98741/codeigniter_crud" target="_blank">See in Github</a>
                         </li>
 
