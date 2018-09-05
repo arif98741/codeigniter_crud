@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2018 at 06:03 AM
+-- Generation Time: Sep 05, 2018 at 01:40 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -46,14 +46,10 @@ CREATE TABLE `usertable` (
 --
 
 INSERT INTO `usertable` (`id`, `name`, `sex`, `username`, `password`, `mobile`, `address`, `email`, `designation`, `image`) VALUES
-(182, 'Albert Newsen', 'male', 'manager', 'manager', '+89-9856-55', 'Berlin, Germany', 'albert@gmail.com', 'Developer', ''),
-(183, 'Richmond Hel', 'male', 'admin', 'admin', '+87-85742-365', 'DC, Lane , WX/123', 'hel.343@hotmail.com', 'admin', ''),
+(182, 'Albert Newsen', 'male', 'manager', 'manager', 'manager', 'Berlin, Germany', 'albert@gmail.com', 'Developer', ''),
+(183, 'Richmond Hel', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'DC, Lane , WX/123', 'hel.343@hotmail.com', 'admin', ''),
 (185, 'Alicia Kristens', 'Female', 'alicia453', '123', 'alicia453', 'New Jersys', 'alicia.pm@gmail.coms', 'Project Manager', 'dome.jpg'),
-(216, 'Kibria Hossen', 'female', 'dsfsdf', '', 'dsfsdf', 'New Jersy', 'abcd@def.com', 'Assistant', 'logo_3.png'),
-(218, 'Kibria Hossen', 'female', 'stuff', 'stuff', 'dsfsdf', 'New Jersy', 'abcd@def.com', 'Assistant', 'logo_3.png'),
-(219, 'Albert Newsen', 'male', '', '', '+89-9856-55', 'Berlin, Germany', 'albert@gmail.com', 'Developer', ''),
-(220, 'Calvin Pr', 'male', 'calvin123', '0', '+1-5874-522', 'California', 'calvin.pr@gmail.com', 'General Manageer', ''),
-(221, 'Alicia Kristens', 'Female', 'alicia453', '123', 'alicia453', 'New Jersys', 'alicia.pm@gmail.coms', 'Project Manager', 'dome.jpg');
+(228, 'Evan Mordanich', 'male', 'evan', 'e10adc3949ba59abbe56e057f20f883e', '+125-569-25', 'New York', 'evan@g.co.uk', '', '17213478.png');
 
 --
 -- Indexes for dumped tables
@@ -73,7 +69,7 @@ ALTER TABLE `usertable`
 -- AUTO_INCREMENT for table `usertable`
 --
 ALTER TABLE `usertable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

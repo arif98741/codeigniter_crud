@@ -36,6 +36,7 @@ class Login extends CI_Controller{
 	!--------------------------------------------
 	!  Save Registration Data
 	!--------------------------------------------
+	*/
 		
 	public function registration()
     {
@@ -50,7 +51,7 @@ class Login extends CI_Controller{
 		$data['sex']		=  $this->input->post('sex');
 		$data['mobile']		=  $this->input->post('mobile');
 		$data['username']	=  $this->input->post('username');
-		$data['password']	=  $this->input->post('password');
+		$data['password']	=  md5($this->input->post('password'));
 		$session_data['message'] = "";
 		
 		if(empty($data['name']) || empty($data['email']) || empty($data['address']) || empty($data['sex']) || empty($data['mobile']) || empty($data['username'])|| empty($data['password'])){
@@ -63,13 +64,12 @@ class Login extends CI_Controller{
 			$this->session->set_userdata($session_data);
 			
 		}else{
-			//$result = $this->HomeModel->adduser($data);
 			redirect("Login/login");
 			
 		}
 		
       
-    }*/
+    }
 	
 	
 	/*
@@ -81,19 +81,30 @@ class Login extends CI_Controller{
     {
 
        $username = $this->input->post("username");
-       $password = $this->input->post("password");
+       $password = md5($this->input->post("password"));
+
+       //echo $password;
+
        $status 	 = $this->LoginModel->login($username,$password);
+      // echo "<pre>";
+       //print_r($status);
+       //echo "</pre>";
+       
        if ($status->result_id->num_rows > 0) {
 
 	       $data 	 = $status->result_object();
-	       $session['login'] = true;
-	       $session['designation'] = $data[0]->designation;
-	       $session['id'] = $data[0]->id;
-	       
-	       $this->session->set_userdata($session); //
+	       $session  = array(
+			        'login'  => true,
+			        'designation'     => $data[0]->designation,
+			        'id' => $data[0]->id
+			);
+
+	       $this->session->set_userdata($session);
+	       $this->session->set_flashdata('success', 'Login Successful');
 	       redirect('home');
        }else{
-       	   redirect("login");
+       		$this->session->set_flashdata('error', 'Username or Password Not Matched');
+       	   	redirect("login");
        }
       
     }
@@ -107,11 +118,8 @@ class Login extends CI_Controller{
     {
     	$this->session->unset_userdata('login');
     	$this->session->unset_userdata('designation');
-
     	redirect('login');
-    	// echo "<pre>";
-    	// print_r($this->session->userdata());
-    	// echo "</pre>";
+    	
     }
 
 }

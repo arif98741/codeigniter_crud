@@ -1,10 +1,22 @@
 <div class="row " style="margin-top: 40px;">
 
+     <?php if($this->session->success): ?>
+        <br>
+        <p class="message alert alert-success"><?php echo $this->session->success; ?> </p>
+     <?php endif; ?>
+
    <div class="jumbotron top-spacing">
        <h3>Welcome to Codeigniter CRUD Homepage</h3>
    </div>
 
 </div>
+<?php echo validation_errors(); ?>
+      
+      <?php if ($this->session->flashdata('error')) {
+    ?>
+        <p id="error" class="message alert alert-warning"><?php  echo $this->session->flashdata('error'); ?></p>
+  
+     <?php } ?>
 
 <div class="row">
         <?php

@@ -23,11 +23,11 @@
                     <input type="submit" value="Login"  class="btn btn-success">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-offset-3 col-md-6">
 
-                 <?php if(isset($error)): ?>
-                    <div class="alert alert-warning">
-                        <?php echo $error['login_error']; ?>
+                 <?php if($this->session->error): ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->session->error; ?>
                     </div>
                  <?php endif; ?>
 

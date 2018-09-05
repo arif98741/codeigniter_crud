@@ -12,7 +12,6 @@
         <div class="row">
 
 
-
             <div class="col-md-6">
                 <div class="form-group">
                 <label for="name">Name</label>
@@ -26,8 +25,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="name">Address</label>
-                    <input type="text" name="address"  class="form-control">
+                    <label for="name">Username</label>
+                    <input type="text" name="username"  class="form-control">
                 </div>
             </div>
 
@@ -45,21 +44,29 @@
                         <option value="female">Female</option>
                         
                     </select>
-
                 </div>
                 <div class="form-group">
-                    <label for="name">Username</label>
-                    <input type="text" name="username"  class="form-control" >
+                    <label for="name">Password</label>
+                    <input type="password" name="password"  class="form-control" >
                 </div>
 
             </div>
             
-            <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input type="text" name="address" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="">User Photo</label>
                     <input type="file" name="userphoto" class="form-control">
                 </div>
             </div>
+
+            
 
             <div class="col-md-12">
                  <div class="form-group">

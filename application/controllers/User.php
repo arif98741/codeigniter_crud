@@ -12,6 +12,7 @@ class User extends  CI_Controller{
     {
         parent::__construct();
         $this->load->model('UserModel');
+        $this->load->library('session');
         $this->load->helper('security');
     }
 
@@ -74,16 +75,20 @@ class User extends  CI_Controller{
             'sex'       => $this->input->post('sex'),
             'mobile'    => $this->input->post('mobile'),
             'username'  => $this->input->post('username'),
+            'password'  => md5($this->input->post('password'))
+            
         );
 
         $this->security->xss_clean($data);
 
-        $this->form_validation->set_rules('name', 'Name', 'min_length[3]|max_length[12]');
+        $this->form_validation->set_rules('name', 'Name', 'min_length[3]|max_length[25]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('address', 'Address', 'required');
         $this->form_validation->set_rules('sex', 'Sex', 'required');
         $this->form_validation->set_rules('mobile', 'Email', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required|min_length[3]|max_length[12]');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|max_length[20]');
+
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -99,8 +104,9 @@ class User extends  CI_Controller{
                 $status = $this->do_upload();
 
                 if ($status == true) {
+                    //get response after photo upload and manage it 
+                    
                     $file_name = $status['upload_data']['file_name'];
-
                     $db = $this->load->database("default",TRUE);
 
                     $db->select("*");
@@ -112,18 +118,15 @@ class User extends  CI_Controller{
                     $db->set('image', $file_name);
                     $db->where('id', $query[0]['id']);
                     $db->update('usertable'); 
-
-                    echo "<pre>";
-                    print_r($query);
-                    echo "</pre>";
-                    exit();
+                   
                 }
+                $this->session->set_flashdata('success', 'User Added Successfully');
+                redirect("user");
                 
             }else{
                  redirect('user/adduser');
             }
             
-          
         }
 
 	}
@@ -177,7 +180,6 @@ class User extends  CI_Controller{
     	
     }
 
-
     /*
     !--------------------------------------------------------
     !       Edit User
@@ -197,6 +199,8 @@ class User extends  CI_Controller{
                 $this->UserModel->edituser($userid);
                 $this->load->view('template/inc/footer.php');
             }else{
+                //$this->session->set_flashdata('success', 'User Updated Successfully');
+
                 redirect('home');
             }
         }else{
@@ -235,17 +239,17 @@ class User extends  CI_Controller{
 
         if ($this->form_validation->run() == FALSE)
         {
-          redirect()->back('');
+            $this->session->set_flashdata('error', 'User Update Failed');
+            redirect()->back('');
              
         }else
         {  
-            echo $this->UserModel->updateuser($data['id'],$data);
-            redirect("user");
+            $this->UserModel->updateuser($data['id'],$data);
+            $this->session->set_flashdata('success', 'User Updated Successfully');
+            redirect("user/userlist");
           
         }
 
-
-        
     }
 
 
@@ -263,7 +267,6 @@ class User extends  CI_Controller{
     }
 	
 
-
     /*
     !--------------------------------------------------------
     !      Delete Single User
@@ -273,6 +276,7 @@ class User extends  CI_Controller{
     {
         if($this->session->has_userdata('login') && $this->session->designation == 'admin'){
             $data['userdata'] =$this->UserModel->deleteuser($userid);
+            $this->session->set_flashdata('success', 'User Deleted Successfully');
             redirect('user');
         }else{
             redirect('user');
@@ -312,11 +316,4 @@ class User extends  CI_Controller{
     }
 
 
-
-
-
-	
-
-
-	
 }

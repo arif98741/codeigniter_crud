@@ -9,25 +9,15 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
-    public function users()
-    {	
-    	/*$this->load->library('session');
-        $this->set_userdata('something','Hello');
-        $this->session->set_userdata('about',"About SOmething");
-        $this->session->set_userdata([
-        	'login' => true,
-        	'name'  => $data['username'],
-        	'email' => $data['email'];
-        ]);
 
-        $this->form_validation->set_rules(array(
-        	'username' => $this->input->post['username'],
-        	'username' => $this->input->post['username'],
-        	'username' => $this->input->post['username'],
-        	'username' => $this->input->post['username'],
-        ));
-
-        redirect('Home/index','refresh');*/
-
-	}
+    public function json()
+    {
+        $this->load->database();
+        $status = $this->db->query("select * from usertable");
+        $data = $status->result_array();
+        $userdata['first'] = $data;
+        $userdata['second'] = $data;
+        echo json_encode($userdata);
+        
+    }
 }

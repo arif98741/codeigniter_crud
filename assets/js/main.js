@@ -10,5 +10,9 @@
  //Datatable Setup
  $(document).ready( function () {
     $('#datatable').DataTable();
+
+    setTimeout(function(args) {
+    	$('.message').slideUp(400);
+    }, 3000);
 } );
  

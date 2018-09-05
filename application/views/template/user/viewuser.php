@@ -1,3 +1,14 @@
+<?php echo validation_errors(); ?>
+<?php if($this->session->userdata('error')){ ?>
+    <br>
+
+    <p id="error" class="message alert alert-warning"><?php  echo $this->session->flashdata('error'); ?></p>
+
+<?php } ?>
+
+ <?php if(isset($_SESSION['success'])){ ?>
+         <p id="success" class="message alert alert-success"><?php  echo $_SESSION['success']; ?></p>
+<?php } ?>
 <div class="row" style="margin-top: 40px;">
 
     <div class="card">
