@@ -1,7 +1,9 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-class User extends  CI_Controller{
+
+class User extends CI_Controller
+{
 
     /*
     !--------------------------------------------------------
@@ -16,16 +18,16 @@ class User extends  CI_Controller{
         $this->load->helper('security');
     }
 
-	/*
+    /*
     !--------------------------------------------------------
     !       Default Function for user Model
     !--------------------------------------------------------
     */
-	public function index()
+    public function index()
     {
-       $this->load->view('template/inc/header.php');
-       $this->load->view('template/home/home.php',$this->showusers());
-       $this->load->view('template/inc/footer.php');
+        $this->load->view('template/inc/header.php');
+        $this->load->view('template/home/home.php', $this->showusers());
+        $this->load->view('template/inc/footer.php');
     }
 
 
@@ -34,11 +36,11 @@ class User extends  CI_Controller{
     !       Show user details in page
     !--------------------------------------------------------
     */
-    public function showusers($value='')
+    public function showusers($value = '')
     {
-		
-    	$data['userdata'] =	$this->UserModel->showusers();
-    	return $data;
+
+        $data['userdata'] = $this->UserModel->showusers();
+        return $data;
     }
 
 
@@ -48,16 +50,16 @@ class User extends  CI_Controller{
     !--------------------------------------------------------
     */
     public function adduser()
-	{
-        if($this->session->has_userdata('login') && $this->session->designation == 'admin'){
+    {
+        if ($this->session->has_userdata('login') && $this->session->designation == 'admin') {
             $this->load->view('template/inc/header.php');
             $this->load->view('template/user/adduser.php');
             $this->load->view('template/inc/footer.php');
-        }else{
+        } else {
             redirect('home');
         }
-		
-	}
+
+    }
 
 
     /*
@@ -65,18 +67,18 @@ class User extends  CI_Controller{
     !       Save User Data from Add User
     !--------------------------------------------------------
     */
-	public function saveuser()
-	{
-		
+    public function saveuser()
+    {
+
         $data = array(
-            'name'      => $this->input->post('name'),
-            'email'     => $this->input->post('email'),
-            'address'   => $this->input->post('address'),
-            'sex'       => $this->input->post('sex'),
-            'mobile'    => $this->input->post('mobile'),
-            'username'  => $this->input->post('username'),
-            'password'  => md5($this->input->post('password'))
-            
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'address' => $this->input->post('address'),
+            'sex' => $this->input->post('sex'),
+            'mobile' => $this->input->post('mobile'),
+            'username' => $this->input->post('username'),
+            'password' => md5($this->input->post('password'))
+
         );
 
         $this->security->xss_clean($data);
@@ -90,24 +92,22 @@ class User extends  CI_Controller{
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|max_length[20]');
 
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('template/inc/header.php');
-            $this->load->view('template/user/adduser.php',array('error' => $this->form_validation));
+            $this->load->view('template/user/adduser.php', array('error' => $this->form_validation));
             $this->load->view('template/inc/footer.php');
             //redirect('user/adduser'); //redirect to userlist
-             
-        }else
-        {  
+
+        } else {
             $result = $this->UserModel->adduser($data);
             if ($result == TRUE) {
                 $status = $this->do_upload();
 
                 if ($status == true) {
                     //get response after photo upload and manage it 
-                    
+
                     $file_name = $status['upload_data']['file_name'];
-                    $db = $this->load->database("default",TRUE);
+                    $db = $this->load->database("default", TRUE);
 
                     $db->select("*");
                     $db->order_by('id', 'DESC');
@@ -117,19 +117,19 @@ class User extends  CI_Controller{
 
                     $db->set('image', $file_name);
                     $db->where('id', $query[0]['id']);
-                    $db->update('usertable'); 
-                   
+                    $db->update('usertable');
+
                 }
                 $this->session->set_flashdata('success', 'User Added Successfully');
                 redirect("user");
-                
-            }else{
-                 redirect('user/adduser');
+
+            } else {
+                redirect('user/adduser');
             }
-            
+
         }
 
-	}
+    }
 
 
     /*
@@ -139,20 +139,18 @@ class User extends  CI_Controller{
     !*/
     public function do_upload()
     {
-        $config['upload_path']    = './uploads/userphoto/';
-        $config['allowed_types']  = 'gif|jpg|png';
-        $config['max_size']       = 10000;
-        $config['max_width']      = 10000;
-        $config['max_height']     = 10000;
+        $config['upload_path'] = './uploads/userphoto/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 10000;
+        $config['max_width'] = 10000;
+        $config['max_height'] = 10000;
 
         $this->load->library('upload', $config);
 
-        if ( ! $this->upload->do_upload('userphoto'))
-        {
+        if (!$this->upload->do_upload('userphoto')) {
             $error = array('error' => $this->upload->display_errors());
             return $error;
-        }else
-        {
+        } else {
             $data = array('upload_data' => $this->upload->data());
             return $data;
         }
@@ -164,20 +162,19 @@ class User extends  CI_Controller{
     !       Show users
     !--------------------------------------------------------
     */
-	public function userlist($type = 'user')
+    public function userlist($type = 'user')
     {
-	
-    	if($type == 'user')
-        {
+
+        if ($type == 'user') {
             $data['userdata'] = $this->UserModel->showusers();
             $this->load->view('template/inc/header.php');
-            $this->load->view('template/user/viewuser.php',$data);
+            $this->load->view('template/user/viewuser.php', $data);
             $this->load->view('template/inc/footer.php');
         }
-        if($type == 'admin'){
-                echo "I am admin";
+        if ($type == 'admin') {
+            echo "I am admin";
         }
-    	
+
     }
 
     /*
@@ -185,31 +182,28 @@ class User extends  CI_Controller{
     !       Edit User
     !--------------------------------------------------------
     */
-    public function edituser($userid = "")
+    public function edituser($userid = null)
     {
-        if($this->session->has_userdata('login')){
-
-            if ($userid == $this->session->id || $this->session->designation == 'admin') {
-                $this->load->view('template/inc/header.php');
-                $data = array(
-                    "userdata"  => $this->UserModel->getsingleuser($userid)
-                );
-                $this->load->view("template/user/edituser",$data);
-                //$this->UserModel->getsingleuser($userid);
-                $this->UserModel->edituser($userid);
-                $this->load->view('template/inc/footer.php');
-            }else{
-                //$this->session->set_flashdata('success', 'User Updated Successfully');
-
-                redirect('home');
-            }
-        }else{
+        // if not logged in, return home
+        if (!$this->session->has_userdata('login')) {
             redirect('home');
         }
 
-        
-    }
+        if ($userid == $this->session->id || $this->session->designation == 'admin') {
 
+            $data = [
+                "userdata" => $this->UserModel->getsingleuser($userid)
+            ];
+
+            $this->load->view('template/inc/header.php');
+            $this->load->view("template/user/edituser", $data);
+            $this->load->view('template/inc/footer.php');
+
+        } else {
+            redirect('home');
+        }
+
+    }
 
     /*
     !--------------------------------------------------------
@@ -219,14 +213,14 @@ class User extends  CI_Controller{
     public function updateuser()
     {
 
-        $data = array(
+        $data = [
             'id' => $this->input->post("id"),
             'name' => $this->input->post('name'),
             'email' => $this->input->post('email'),
             'address' => $this->input->post('address'),
             'sex' => $this->input->post('sex'),
             'mobile' => $this->input->post('mobile')
-        );
+        ];
 
         $this->security->xss_clean($data);
 
@@ -237,17 +231,15 @@ class User extends  CI_Controller{
         $this->form_validation->set_rules('mobile', 'Email', 'trim|required');
 
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', 'User Update Failed');
-            redirect()->back('');
-             
-        }else
-        {  
-            $this->UserModel->updateuser($data['id'],$data);
+            redirect("user/userlist");
+
+        } else {
+            $this->UserModel->updateuser($data['id'], $data);
             $this->session->set_flashdata('success', 'User Updated Successfully');
             redirect("user/userlist");
-          
+
         }
 
     }
@@ -260,12 +252,12 @@ class User extends  CI_Controller{
     */
     public function viewuser($userid = "")
     {
-       $this->load->view('template/inc/header.php');
-	   $data['userdata'] = $this->UserModel->getsingleuser($userid);
-       $this->load->view('template/user/viewsingleuser.php',$data);
-       $this->load->view('template/inc/footer.php');
+        $this->load->view('template/inc/header.php');
+        $data['userdata'] = $this->UserModel->getsingleuser($userid);
+        $this->load->view('template/user/viewsingleuser.php', $data);
+        $this->load->view('template/inc/footer.php');
     }
-	
+
 
     /*
     !--------------------------------------------------------
@@ -274,45 +266,45 @@ class User extends  CI_Controller{
     */
     public function deleteuser($userid = "")
     {
-        if($this->session->has_userdata('login') && $this->session->designation == 'admin'){
-            $data['userdata'] =$this->UserModel->deleteuser($userid);
+        if ($this->session->has_userdata('login') && $this->session->designation == 'admin') {
+            $data['userdata'] = $this->UserModel->deleteuser($userid);
             $this->session->set_flashdata('success', 'User Deleted Successfully');
             redirect('user');
-        }else{
+        } else {
             redirect('user');
         }
-        
+
     }
 
 
-     /*
-    !--------------------------------------------------------
-    !      Delete Single User
-    !--------------------------------------------------------
-    */
+    /*
+   !--------------------------------------------------------
+   !      Delete Single User
+   !--------------------------------------------------------
+   */
     public function profile($userid = "")
     {
-        
+
         $status = $this->UserModel->profile($userid);
         if (count($status) > 0) {
-            
+
 
             $data['userdata'] = $this->UserModel->profile($userid);
             $this->load->view('template/inc/header.php');
-            $this->load->view('template/user/profile',$data);
+            $this->load->view('template/user/profile', $data);
             $this->load->view('template/inc/footer.php');
 
 
-        }else{
+        } else {
             $data['pagenotfound'] = 'Page You are searcing is not found';
-            
+
             $this->load->view('template/inc/header.php');
-             $this->load->view('template/error/error_404',$data);
+            $this->load->view('template/error/error_404', $data);
             $this->load->view('template/inc/footer.php');
-           
+
         }
-       
-        
+
+
     }
 
 
