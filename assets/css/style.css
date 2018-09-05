@@ -1,11 +1,16 @@
-.home-content{
-	min-height: 400px;
-}
-.top-spacing{
-	margin-top: 40px;
+body {
+    padding-top: 70px!important;
 }
 
-.designation_ico{
-	width : 25px;
-	height : 25px;
+.home-content {
+    min-height: 400px;
+}
+
+.top-spacing {
+    margin-top: 40px;
+}
+
+.designation_ico {
+    width: 25px;
+    height: 25px;
 }
