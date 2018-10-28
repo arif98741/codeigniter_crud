@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2018 at 01:40 PM
+-- Generation Time: Oct 28, 2018 at 11:52 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `usertable` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `sex` varchar(10) NOT NULL,
   `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
@@ -46,10 +46,9 @@ CREATE TABLE `usertable` (
 --
 
 INSERT INTO `usertable` (`id`, `name`, `sex`, `username`, `password`, `mobile`, `address`, `email`, `designation`, `image`) VALUES
-(182, 'Albert Newsen', 'male', 'manager', 'manager', 'manager', 'Berlin, Germany', 'albert@gmail.com', 'Developer', ''),
-(183, 'Richmond Hel', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'DC, Lane , WX/123', 'hel.343@hotmail.com', 'admin', ''),
+(182, 'Albert Newsen', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', '01558', 'Berlin, Germany', 'albert@gmail.com', 'admin', ''),
 (185, 'Alicia Kristens', 'Female', 'alicia453', '123', 'alicia453', 'New Jersys', 'alicia.pm@gmail.coms', 'Project Manager', 'dome.jpg'),
-(228, 'Evan Mordanich', 'male', 'evan', 'e10adc3949ba59abbe56e057f20f883e', '+125-569-25', 'New York', 'evan@g.co.uk', '', '17213478.png');
+(187, 'আরিফুল ইসলাম', 'male', 'ljflj', '0b59065eef37e8b3188a4e5a8b79e4be', 'ljlj', 'dlsfj', 'a@gja.co', '', '812014462j4d5h1.jpg');
 
 --
 -- Indexes for dumped tables
@@ -69,7 +68,7 @@ ALTER TABLE `usertable`
 -- AUTO_INCREMENT for table `usertable`
 --
 ALTER TABLE `usertable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
