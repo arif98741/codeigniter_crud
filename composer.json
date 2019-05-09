@@ -1,0 +1,13 @@
+{
+    "name": "arif98741/codeigniter_crud",
+    "description": "This is a project repo",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ariful",
+            "email": "arifsofg@gmail.com"
+        }
+    ],
+    "require": {}
+}
