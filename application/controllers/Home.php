@@ -16,10 +16,10 @@ class Home extends  CI_Controller{
 	}
 
 	/*
-	!-----------------------------------------------
+	!----------------------------------------------
 	! 	Default Method for (./)
 	!   Define Default in config/route.php
-	!-----------------------------------------------
+	!----------------------------------------------
 	*/
 	public function index($function = null){
 		
