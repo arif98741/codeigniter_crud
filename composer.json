@@ -9,5 +9,6 @@
             "email": "arifsofg@gmail.com"
         }
     ],
+    "minimum-stability": "stable",
     "require": {}
 }
