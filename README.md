@@ -24,6 +24,12 @@ After that, you will get a zip file called codeigniter_crud-master.zip . After t
 Go to your C drive where you installed your local server. find out folder htdocs(for xampp) or www(for wamp) .
 Inside folder make a folder called codeignite. Inside codeigniter keep all files downloaded from repository. 
 
+## Installation by Composer
+<pre>
+composer create-project arif98741/codeigniter_crud
+</pre>
+
+
 Make a database called test(as your own wish. if you do that, then change the database connection credentials at application/config/database.php) in your phpmyadmin. import the database there(can be found at codeigniter_crud-master/database/test.sql)
 
 ## Login/Registration
