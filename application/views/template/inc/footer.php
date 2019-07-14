@@ -1,4 +1,11 @@
 
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <p class="text-center">Copyright Ariful Islam | 2018 - <?php echo date('Y');?> | v1.0.0_dev</p>
+    </div>
+  </div>
+</div>
     <!-- Bootstrap core JavaScript
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
