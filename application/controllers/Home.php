@@ -26,9 +26,10 @@ class Home extends  CI_Controller{
 		$data['totaluser'] = $this->UserModel->totalUser();
 		$data['totaladmin'] = $this->UserModel->totalAdmin();
 		$data['singleuser'] = $this->UserModel->lastUser();
-		$this->load->view('template/inc/header.php');
-		$this->load->view('template/home/home.php',$data);
-		$this->load->view('template/inc/footer.php');
+		$data['users'] 		= $this->UserModel->showusers();
+		$this->load->view('template/inc/header');
+		$this->load->view('template/home/home',$data);
+		$this->load->view('template/inc/footer');
 	}
 
 }

@@ -1,16 +1,17 @@
-		<div class="card bg-success top-spacing text-center">
-			<h3>&copy; Ariful Islam | 2018</h3>
-			<h4><a href="https://github.com/arif98741" target="_blank">Github <i class="fa fa-github"></i></a> | <a href="https://stackoverflow.com/users/6463182/ariful-islam" target="_blank">Stackoverflow</a> </h4>
-		</div>
-	</div>
-	
-</div>
 
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="<?php echo base_url(); ?>node_modules/jquery/dist/jquery.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-
-<script src="<?php echo site_url('assets/js/jquery.min.js'); ?>"></script>
-<script src="<?php echo site_url('assets/js/bootstrap.min.js'); ?>"></script>
-<script src="<?php echo site_url('assets/js/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?php echo site_url('assets/js/main.js'); ?>"></script>
-</body>
-</html>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('#dataTable').DataTable();
+        } );
+      </script>
+    </body>
+    </html>

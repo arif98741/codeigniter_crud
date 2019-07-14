@@ -81,10 +81,8 @@ class UserModel extends CI_Model
     public function profile($id)
     {
         $result = $this->db->query("select * from usertable where id='$id' limit 1");
-        //return $result->result_array();
         return $result->result_object();
     }
-
 
 }
 

@@ -1,83 +1,62 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CI Crud Code Template</title>
-    <link rel="stylesheet" href="<?php echo site_url("assets/css/bootstrap.min.css");?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css");?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap4.min.css"); ?>">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>CI CRUD by - Ariful Islam</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/offcanvas/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 </head>
-<body>
 
-<div class="wrapper">
+<body class="bg-light">
 
-    <div class="container">
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="<?php echo base_url(); ?>">Codeigniter CRUD</a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo site_url(); ?>">CodeIgniter CRUD</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="<?php echo site_url('user/userlist'); ?>" class="active">User List</a>
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <?php if($this->session->has_userdata('login')): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>user"><i class="fa fa-users"></i>&nbsp;User List</a>
+          </li>
 
-                        </li>
-                        
-
-                        <?php if($this->session->has_userdata('login') && $this->session->designation == 'admin'): ?>
-
-                        <li>
-                            <a href="<?php echo site_url("user/adduser"); ?>">Add User</a>
-                        </li>
-                        <?php endif; ?>
-                        <?php if($this->session->has_userdata('login')): ?>
-                        <li>
-                            <a href="<?php echo base_url();?>user/profile/<?php echo $this->session->id; ?>">Profile(<?php echo $this->session->designation; ?>)</a>
-                        </li>
-                        <?php endif; ?>
+        <?php endif; ?>
 
 
-                        <li>
-                            <?php if ($this->session->has_userdata('login')): ?>
+        <?php if(!$this->session->has_userdata('login')): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>login" target="blank"><i class="fa fa-lock"></i>&nbsp;Login</a>
+          </li>
+        <?php endif; ?>
 
-                                <a href="<?php echo site_url("login/logout"); ?>">Logout</a>
 
-                            <?php else: ?>
 
-                                <a href="<?php echo site_url("login"); ?>">Login</a>
-                            <?php endif; ?>
-                            
-                        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/arif98741/codeigniter_crud" target="blank"><i class="fa fa-github"></i>&nbsp;Github</a>
+        </li>
 
-                       <!--  <li>
-                           <a href="<?php echo site_url("Login/registration"); ?>">Registration</a>
-                       </li> -->
 
-                         <li>
-                            <a href="https://github.com/arif98741/codeigniter_crud/graphs/contributors" target="_blank">Contributors</a>
-                        </li><li>
-                            <a href="https://github.com/arif98741/codeigniter_crud" target="_blank">See in Github</a>
-                        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ABCD</a>
+        </li>
 
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
-        </nav>
-        
+        <?php if($this->session->has_userdata('login')): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>login/logout" target="blank"><i class="fa fa-arrow-right"></i>&nbsp;Logout</a>
+          </li>
+        <?php endif; ?>
+
+      </ul>
+      
+    </div>
+  </nav>

@@ -166,7 +166,7 @@ class User extends CI_Controller
     {
 
         if ($type == 'user') {
-            $data['userdata'] = $this->UserModel->showusers();
+            $data['users'] = $this->UserModel->showusers();
             $this->load->view('template/inc/header.php');
             $this->load->view('template/user/viewuser.php', $data);
             $this->load->view('template/inc/footer.php');
