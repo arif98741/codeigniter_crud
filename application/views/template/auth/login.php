@@ -36,10 +36,7 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url(); ?>login" target="blank"><i class="fa fa-lock"></i>&nbsp;Login</a>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">ABCD</a>
-        </li>
+        
       </ul>
       
     </div>
