@@ -18,6 +18,10 @@
       <script>
         $(document).ready(function() {
           $('#dataTable').DataTable();
+
+          setTimeout(function(){
+            $('#message').slideUp(400);
+          },4000);
         } );
       </script>
     </body>
