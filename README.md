@@ -40,9 +40,17 @@ Registration is done by administration by default after login
 Username: admin <br>
 Password: admin
 
+
+
 	
 
 ## Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!
 
 [![Beerpay](https://beerpay.io/arif98741/codeigniter_crud/badge.svg?style=beer-square)](https://beerpay.io/arif98741/codeigniter_crud)  [![Beerpay](https://beerpay.io/arif98741/codeigniter_crud/make-wish.svg?style=flat-square)](https://beerpay.io/arif98741/codeigniter_crud?focus=wish)
+
+<br><br>
+<img src="https://raw.githubusercontent.com/arif98741/codeigniter_crud/master/screenshots/login.JPG" width="100%"> 
+<br><br>
+
+<img src="https://raw.githubusercontent.com/arif98741/codeigniter_crud/master/screenshots/homepage.JPG" width="100%"> 
