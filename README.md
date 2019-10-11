@@ -41,3 +41,8 @@ Username: admin <br>
 Password: admin
 
 	
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/arif98741/codeigniter_crud/badge.svg?style=beer-square)](https://beerpay.io/arif98741/codeigniter_crud)  [![Beerpay](https://beerpay.io/arif98741/codeigniter_crud/make-wish.svg?style=flat-square)](https://beerpay.io/arif98741/codeigniter_crud?focus=wish)
