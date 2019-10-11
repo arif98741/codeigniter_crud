@@ -254,6 +254,12 @@ class User extends CI_Controller
     {
         $this->load->view('template/inc/header.php');
         $data['userdata'] = $this->UserModel->getsingleuser($userid);
+        //echo "<pre>";
+        //print_r($data['userdata']); exit;
+        $data['totaluser'] = $this->UserModel->totalUser();
+        $data['totaladmin'] = $this->UserModel->totalAdmin();
+        $data['singleuser'] = $this->UserModel->lastUser();
+        $data['users']      = $this->UserModel->showusers();
         $this->load->view('template/user/viewsingleuser.php', $data);
         $this->load->view('template/inc/footer.php');
     }

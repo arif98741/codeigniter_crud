@@ -39,8 +39,6 @@
           </li>
         <?php endif; ?>
 
-
-
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/arif98741/codeigniter_crud" target="blank"><i class="fa fa-github"></i>&nbsp;Github</a>
         </li>

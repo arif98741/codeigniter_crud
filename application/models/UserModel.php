@@ -38,7 +38,7 @@ class UserModel extends CI_Model
     {
         $where['id'] = $userid;
         $result = $this->db->get_where("usertable", $where);
-        return $result->result_array();
+        return $result->row();
     }
 
 
@@ -59,7 +59,6 @@ class UserModel extends CI_Model
     public function totalUser()
     {
         $result = $this->db->query("select * from usertable");
-        //return $result->result_array();
         return $result->result_id->num_rows;
     }
 

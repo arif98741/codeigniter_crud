@@ -1,107 +1,87 @@
-<div class="row" style="margin-top: 40px;">
-
-    <div class="card">
-        <h3>Add User</h3>
-    </div>
-    
-    <?php echo form_open_multipart('user/saveuser');?>
 
 
-    
-
-        <div class="row">
+<?php echo form_open_multipart('user/saveuser');?>
 
 
-            <div class="col-md-6">
-                <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" class="form-control">
-                </div>
+<div class="container-fluid">
 
-
-                <div class="form-group">
-                    <label for="name">Email</label>
-                    <input type="text" name="email"  class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="name">Username</label>
-                    <input type="text" name="username"  class="form-control">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                 <div class="form-group">
-                    <label for="name">Mobile</label>
-                    <input type="text" name="mobile"  class="form-control" >
-                </div>
-                <div class="form-group">
-                    <label for="name">Sex</label>
-
-                    <select  name="sex"  class="form-control">
-                        <option value="" disabled="" selected="">Select</option>
-                        <option value="male" >Male</option>
-                        <option value="female">Female</option>
-                        
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="name">Password</label>
-                    <input type="password" name="password"  class="form-control" >
-                </div>
-
-            </div>
-            
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="">Address</label>
-                    <input type="text" name="address" class="form-control">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="">User Photo</label>
-                    <input type="file" name="userphoto" class="form-control">
-                </div>
-            </div>
-
-            
-
+    <div class="row" style="margin-top: 80px !important;">
+        <?php if($this->session->success): ?>
             <div class="col-md-12">
-                 <div class="form-group">
-
-                    <input type="checkbox" value="yes">&nbsp;I have read terms and conditions properly
-                </div>
-                <div class="form-group">
-
-                    <input type="submit" class="form-control btn btn-primary" value="Save User" style="max-width: 400px; margin: 0 auto;">
-                </div>
+                <p class="alert alert-success ">
+                    <?php echo $this->session->success; ?>
+                </p>
             </div>
+        <?php endif; ?>
 
-            <div class="col-md-6">
+        <div class="offset-md-1 col-md-10 mt-1" >
+            <div class="card" >
+                <div class="card-header">
+                    <h3><i class="fa fa-user-plus"></i>&nbsp;Add User</h3>
+                </div>
 
+                <div class="card-body">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control">
+                                <small>Error in insrting</small>
+                            </div>
+                        </div>
 
-                 <?php if(validation_errors() != ""): ?>
-                    <div class="alert alert-warning">
-                        <?php echo validation_errors(); ?>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Username</label>
+                                <input type="text" class="form-control">
+                                <small>Error in insrting</small>
+                            </div>
+                        </div>
                     </div>
-                 <?php endif; ?>
 
-                <?php if(isset($message)){ //print error message
-                    echo $message;
-                } ?>
-                
-             </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control">
+                                <small>Error in insrting</small>
+                            </div>
+                        </div>
 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Username</label>
+                                <input type="text" class="form-control">
+                                <small>Error in insrting</small>
+                            </div>
+                        </div>
+                    </div>
 
-        </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control">
+                                <small>Error in insrting</small>
+                            </div>
+                        </div>
 
-        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Username</label>
+                                <input type="text" class="form-control">
+                                <small>Error in insrting</small>
+                            </div>
+                        </div>
+                    </div>
 
+                    
 
-    </form>
-	
+              </div>
+          </div>
+      </div>
 
 </div>
-<a href="<?php echo site_url("Home"); ?>" class="btn btn-danger">Back</a>
+</div>
+

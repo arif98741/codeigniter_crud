@@ -71,6 +71,7 @@
             <div class="form-group">
 
               <input type="submit"  name="submit" class="btn  btn-primary">
+              <span>username: <strong>admin</strong> | password: <strong>admin</strong></span>
             </div>
 
           </form>

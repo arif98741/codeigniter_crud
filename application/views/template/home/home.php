@@ -4,7 +4,7 @@
 	<div class="row" style="margin-top: 80px !important;">
 		<?php if($this->session->success): ?>
 			<div class="col-md-12">
-				<p class="alert alert-success ">
+				<p class="alert alert-success" id="message">
 					<?php echo $this->session->success; ?>
 				</p>
 			</div>

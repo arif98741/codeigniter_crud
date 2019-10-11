@@ -6,11 +6,7 @@ class Helper extends  CI_Controller{
 	
 	public function __construct($function = null)
 	{
-		function_exists('daa','data')
-		{
-
-		}
-	
+		
 	}
 
 	public function checkPage()
@@ -21,7 +17,6 @@ class Helper extends  CI_Controller{
         exit();
 		return view('',$data);
 	}
-	
 }
 
 ?>

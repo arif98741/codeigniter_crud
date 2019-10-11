@@ -1,25 +1,47 @@
-<div class="row" style="margin-top: 40px;">
 
-    <div class="card">
-        <h3>View User</h3>
-    </div>
+<div class="container-fluid">
 
-    
-    <div class="well spacing-top col-md-6">
-        <img src="<?php echo base_url();?>/uploads/userphoto/<?php echo $userdata[0]['image']; ?>" class="img-thumbnail" alt="" width="150px" height="150px">
-        <h4><strong>ID :</strong> <?php echo $userdata[0]['id']; ?></h4>
-        <h4><strong>Name :</strong> <?php echo $userdata[0]['name']; ?></h4>
-        <h4><strong>Sex :</strong> <?php echo $userdata[0]['sex']; ?></h4>
-        <h4><strong>Mobile :</strong> <?php echo $userdata[0]['mobile']; ?></h4>
-        <h4><strong>Email :</strong> <?php echo $userdata[0]['email']; ?></h4>
-        <h4><strong>Username :</strong> <?php echo $userdata[0]['username']; ?></h4>
-        <h4><strong>Designation :</strong> <?php echo $userdata[0]['designation']; ?></h4>
-        <h4><strong>Address :</strong> <?php echo $userdata[0]['address']; ?></h4>   
-    </div>
-    
-    <div class="well spacing-top col-md-offset-1 col-md-5">
+    <div class="row" style="margin-top: 80px !important;">
+        <?php if($this->session->success): ?>
+            <div class="col-md-12">
+                <p class="alert alert-success ">
+                    <?php echo $this->session->success; ?>
+                </p>
+            </div>
+        <?php endif; ?>
 
-        <a href="<?php echo site_url("user/edituser")."/"; ?><?php echo $userdata[0]['id']; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i>&nbsp;Edit User</a> <a href="<?php echo site_url("user/userlist"); ?>" class="btn btn-success"><i class="fa fa-refresh"></i>&nbsp;Back</a>
-          
+        <div class="col-md-10 mt-1" >
+            <div class="card" >
+                <div class="card-header">
+                    <h3><i class="fa fa-user"></i>&nbsp;User Profile</h3>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item active">User details</li>
+                      <li class="list-group-item">Username: <?php  echo $userdata->username?></li>
+                      <li class="list-group-item">Gender: <?php  echo $userdata->sex?></li>
+                      <li class="list-group-item">Email: <?php  echo $userdata->email?></li>
+                      <li class="list-group-item">Address: <?php  echo $userdata->address?></li>
+                      <li class="list-group-item">Designation: <?php  echo $userdata->designation?></li>
+                  </ul>
+
+              </div>
+          </div>
+      </div>
+      <div class="col-md-2 mt-1" >
+        <div class="card mt-1" >
+            <div class="card-header">
+                <h3><?php  echo $userdata->name?></h3>
+            </div>
+
+            <div class="card-body">
+
+                <h2 class="text-center"><img src="<?php echo base_url(); ?>uploads/userphoto/<?php echo $userdata->image;?>" class="img-fluid" alt=""></h2>
+            </div>
+        </div>
+
     </div>
 </div>
+</div>
+
